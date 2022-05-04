@@ -26,7 +26,7 @@ class Dog(Base):
     )
 
     name = models.CharField('Name', max_length=100)
-    age = models.IntegerField('Age', max_length=2)
+    age = models.IntegerField('Age')
     breed = models.CharField('Breed', max_length=100, choices=BREEDS_CHOICES)
     image = StdImageField('Image', upload_to='dogs', variations={'thumb': (124, 124)})
 
