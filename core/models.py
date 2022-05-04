@@ -25,9 +25,15 @@ class Dog(Base):
         ('Chow Chow', 'Chow Chow')
     )
 
+    GENDER_CHOICES = (
+        ('M', 'Male'),
+        ('F', 'Female')
+    )
+
     name = models.CharField('Name', max_length=100)
     age = models.IntegerField('Age')
     breed = models.CharField('Breed', max_length=100, choices=BREEDS_CHOICES)
+    sex = models.CharField('Sex', max_length=10, choices=GENDER_CHOICES)
     image = StdImageField('Image', upload_to='dogs', variations={'thumb': (124, 124)})
 
     class Meta:
