@@ -22,18 +22,19 @@ class Dog(Base):
         ('Boxer', 'Boxer'),
         ('Bulldog', 'Bulldog'),
         ('Chihuahua', 'Chihuahua'),
-        ('Chow Chow', 'Chow Chow')
+        ('Chow Chow', 'Chow Chow'),
+        ('Labrador Retriever', 'Labrador Retriever')
     )
 
     GENDER_CHOICES = (
-        ('M', 'Male'),
-        ('F', 'Female')
+        ('Male', 'M'),
+        ('Female', 'F')
     )
 
     name = models.CharField('Name', max_length=100)
     age = models.IntegerField('Age')
     breed = models.CharField('Breed', max_length=100, choices=BREEDS_CHOICES)
-    sex = models.CharField('Sex', max_length=10, choices=GENDER_CHOICES)
+    sex = models.CharField('Sex', max_length=10, choices=GENDER_CHOICES, null=True, blank=True)
     image = StdImageField('Image', upload_to='dogs', variations={'thumb': (124, 124)})
 
     class Meta:
