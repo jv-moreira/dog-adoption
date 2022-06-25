@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from .models import Dog
-from .forms import DogModelForm
+from .forms import DogModelForm, ContactForm
 from django.contrib import messages
 
 
@@ -27,3 +27,20 @@ def register(request):
     context = {'form': form}
 
     return render(request, 'register.html', context)
+
+
+def contact(request):
+    form = ContactForm(request.POST or None)
+
+    if str(request.method) == 'POST':
+        if form.is_valid():
+            form.send_email()
+            messages.success(request, 'Email sent!')
+            form = ContactForm()
+
+        else:
+            messages.error(request, 'Error!')
+
+    context = {'form': form}
+
+    return render(request, 'contact.html', context)
