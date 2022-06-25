@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Index</title>
+</head>
+<body>
+    <h1><strong>Dog Adoption</strong></h1>
+    <a href="{% url 'register' %}">Register a New Dog</a>
+    <br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Breed</th>
+                <th>Contact</th>
+            </tr>
+        </thead>
+        {% for d in dogs %}
+        <tr>
+            <td><img src="{{ d.image.url }}"/></td>
+            <td>{{ d.name }}</td>
+            <td>{{ d.age }}</td>
+            <td>{{ d.sex }}</td>
+            <td>{{ d.breed }}</td>
+            <td><a href="">Contact</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+</head>
+<body>
+    <h1>New Dog</h1>
+    <a href="{% url 'index' %}">Back to Homepage</a>
+    <br>
+    <form action="{% url 'register' %}" method="post" autocomplete="off" enctype="multipart/form-data">
+        {% csrf_token %}
+          <!--label for="name">Name:</label><br>
+          <input type="text" id="name" name="name"><br>
+          <label for="age">Age:</label><br>
+          <input type="number" id="age" name="age"><br>
+          <label for="breed">Breed:</label><br>
+          <input type="text" id="breed" name="breed"><br>
+          <label>Sex:</label><br>
+          <input type="radio" name="sex" value="Male">Male<br>
+          <input type="radio" name="sex" value="Female">Female<br>
+          <label for="image">Image:</label><br>
+          <input type="file" id="image" name="image"><br-->
+        {% for field in form %}
+            {{ field.label }}
+            <br>
+            {{ field }}
+            <br>
+        {% endfor %}
+
+        {% if messages %}
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        {% endif %}
+        <br>
+        <button type="submit">Register</button>
+    </form>
+</body>
+</html>
