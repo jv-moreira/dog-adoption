@@ -29,7 +29,7 @@ def register(request):
     return render(request, 'register.html', context)
 
 
-def contact(request):
+def contact(request, id):
     form = ContactForm(request.POST or None)
 
     if str(request.method) == 'POST':
@@ -41,6 +41,6 @@ def contact(request):
         else:
             messages.error(request, 'Error!')
 
-    context = {'form': form}
+    context = {'form': form, 'id': id}
 
     return render(request, 'contact.html', context)
