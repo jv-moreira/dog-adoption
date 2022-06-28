@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import Dog
 from .forms import DogModelForm, ContactForm
 from django.contrib import messages
@@ -30,8 +30,7 @@ def register(request):
 
 
 def contact(request, id):
-    #TODO: Use get_or_404
-    dog = Dog.objects.get(id=id)
+    dog = get_object_or_404(Dog, id=id)
 
     form = ContactForm(request.POST or None)
 
