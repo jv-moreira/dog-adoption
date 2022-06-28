@@ -30,6 +30,9 @@ def register(request):
 
 
 def contact(request, id):
+    #TODO: Use get_or_404
+    dog = Dog.objects.get(id=id)
+
     form = ContactForm(request.POST or None)
 
     if str(request.method) == 'POST':
@@ -41,6 +44,6 @@ def contact(request, id):
         else:
             messages.error(request, 'Error!')
 
-    context = {'form': form, 'id': id}
+    context = {'form': form, 'id': id, 'dog': dog}
 
     return render(request, 'contact.html', context)

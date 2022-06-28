@@ -8,6 +8,25 @@
     <h1>Contact</h1>
     <a href="{% url 'index' %}">Back to Homepage</a>
     <br><br>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Image</th>
+                <th>Name</th>
+                <th>Age</th>
+                <th>Sex</th>
+                <th>Breed</th>
+            </tr>
+        </thead>
+        <tr>
+            <td><img src="{{ dog.image.url }}"></td>
+            <td>{{ dog.name }}</td>
+            <td>{{ dog.age }}</td>
+            <td>{{ dog.sex }}</td>
+            <td>{{ dog.breed }}</td>
+        </tr>
+    </table>
+    <br>
     <form action="{% url 'contact' id %}" method="post" autocomplete="off">
         {% csrf_token %}
         {% for field in form %}
