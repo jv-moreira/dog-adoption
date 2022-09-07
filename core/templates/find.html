@@ -3,23 +3,10 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <title>Index</title>
+    <title>Find</title>
 </head>
 <body>
     <h1><strong>Dog Adoption</strong></h1>
-    <a href="{% url 'register' %}">Register a New Dog</a>
-    <br><br>
-    <form action="{% url 'index' %}" method="post" autocomplete="off">
-        {% csrf_token %}
-        {% for field in form %}
-            {{ field.label }}
-            <br>
-            {{ field }}
-            <br>
-        {% endfor %}
-        <br>
-        <button type="submit">Find a Dog!</button>
-    </form>
     <br>
     <table border="1">
         <thead>

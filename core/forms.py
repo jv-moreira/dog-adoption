@@ -32,3 +32,18 @@ class ContactForm(forms.Form):
         )
 
         mail.send()
+
+
+class FindForm(forms.Form):
+    breeds, ages = [], []
+    dogs = Dog.objects.all()
+
+    for d in dogs:
+        if d.breed not in breeds:
+            breeds.append((str(d.breed), str(d.breed)))
+        if d.age not in ages:
+            ages.append((str(d.age), str(d.age)))
+
+    breed = forms.ChoiceField(label='Breed', choices=breeds)
+    age = forms.ChoiceField(label='Age', choices=ages)
+    sex = forms.ChoiceField(label='Sex', choices=[('Male', 'Male'), ('Female', 'Female')])
